@@ -9,11 +9,11 @@ import Foundation
 import SailLogger
 import Combine
 
-class FileAttribute: Identifiable, ObservableObject, Equatable {
+class FileAttribute: Identifiable, Equatable, Hashable {
     
     let id: String
     let name: String
-    @Published var content = ""
+    var content = ""
     
     init(name: String = "", attributes: [FileAttributeKey: Any] = [:]) {
         id = name
@@ -30,6 +30,10 @@ class FileAttribute: Identifiable, ObservableObject, Equatable {
     
     static func == (lhs: FileAttribute, rhs: FileAttribute) -> Bool {
         lhs.name == rhs.name
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
     }
     
 }

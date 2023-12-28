@@ -11,14 +11,24 @@ import Combine
 
 struct FileView: View {
     @EnvironmentObject var model: AppModel
-
+    let file: FileAttribute
+    
+    var info: FileAttribute? {
+        if file == model.changedFile {
+            return model.changedFile
+        } else {
+            file.loadContent()
+            return file
+        }
+    }
+    
     var body: some View {
-        if let file = model.selectedFile {
+        if let file = info {
             ScrollView {
                 Text(file.content)
             }
         } else {
-            Text("Empty")
+            Text("FileView")
         }
     }
 }

@@ -15,9 +15,6 @@ struct SailLoggerDemoApp: App {
         WindowGroup {
             ContentView()
                 .environmentObject(model)
-                .onAppear {
-                    model.reloadFileNames()
-                }
         }
     }
 }

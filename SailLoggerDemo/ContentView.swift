@@ -11,29 +11,25 @@ import Combine
 
 struct ContentView: View {
     @EnvironmentObject var model: AppModel
-
+    
     var body: some View {
         NavigationSplitView {
             List(model.fileInfos) { info in
-                Button(info.name) {
-                    model.selectedFile = info
-                    info.loadContent()
+                NavigationLink {
+                    FileView(file: info)
+                } label: {
+                    Text(info.name)
                 }
             }
             .toolbar {
                 Button {
                     SailLogger.log(msg: "error", level: .error)
-                    model.reloadFileNames()
                 } label: {
                     Text("log")
                 }
             }
         } detail: {
-            FileView()
+            Text("Empty")
         }
     }
-}
-
-#Preview {
-    ContentView()
 }

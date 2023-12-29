@@ -6,17 +6,30 @@
 //
 
 import Foundation
+import SailLogger
+import Combine
 
-struct FileAttribute: Identifiable {
-    var id: Int
-    let name: String
+class FileAttribute: Identifiable, ObservableObject, Equatable {
     
-    init?(name: String, attributes: [FileAttributeKey: Any]) {
-        if let date = attributes[.creationDate] as? Date {
-            id = Int(date.timeIntervalSince1970)
-        } else {
-            return nil
-        }
+    let id: String
+    let name: String
+    @Published var content = ""
+    
+    init(name: String = "", attributes: [FileAttributeKey: Any] = [:]) {
+        id = name
         self.name = name
     }
+    
+    func loadContent() {
+        var url = FileLogger.shared.logsUrl
+        url.appendPathComponent(name)
+        if let text = try? String(contentsOf: url) {
+            content = text
+        }
+    }
+    
+    static func == (lhs: FileAttribute, rhs: FileAttribute) -> Bool {
+        lhs.name == rhs.name
+    }
+    
 }

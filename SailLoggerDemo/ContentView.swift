@@ -7,29 +7,29 @@
 
 import SwiftUI
 import SailLogger
+import Combine
 
 struct ContentView: View {
-    @Environment(AppModel.self) var model
+    @EnvironmentObject var model: AppModel
 
     var body: some View {
         NavigationSplitView {
-            List(model.infos, id: \.id) { info in
-                NavigationLink {
-                    FileView(name: info.name)
-                } label: {
-                    Text(info.name)
+            List(model.fileInfos) { info in
+                Button(info.name) {
+                    model.selectedFile = info
+                    info.loadContent()
                 }
             }
             .toolbar {
                 Button {
                     SailLogger.log(msg: "error", level: .error)
-                    model.reloadLogs()
+                    model.reloadFileNames()
                 } label: {
                     Text("log")
                 }
             }
         } detail: {
-            Text("Empty")
+            FileView()
         }
     }
 }

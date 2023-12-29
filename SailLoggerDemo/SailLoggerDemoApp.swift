@@ -9,14 +9,14 @@ import SwiftUI
 
 @main
 struct SailLoggerDemoApp: App {
-    @State private var model = AppModel()
+    let model = AppModel()
 
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .environment(model)
+                .environmentObject(model)
                 .onAppear {
-                    model.reloadLogs()
+                    model.reloadFileNames()
                 }
         }
     }

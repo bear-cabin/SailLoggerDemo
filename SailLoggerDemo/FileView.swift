@@ -7,30 +7,18 @@
 
 import SwiftUI
 import SailLogger
+import Combine
 
 struct FileView: View {
-    let name: String
-    let logsUrl = FileLogger.shared.logsUrl()
-    
-    var text: String {
-        let url = logsUrl.appending(component: name)
-        if let text = try? String(contentsOf: url) {
-            return text
-        }
-        return ""
-    }
-    
-    init(name: String) {
-        self.name = name
-    }
-    
-    var body: some View {
-        ScrollView {
-            Text(text)
-        }
-    }
-}
+    @EnvironmentObject var model: AppModel
 
-#Preview {
-    FileView(name: "2023-12-29.log")
+    var body: some View {
+        if let file = model.selectedFile {
+            ScrollView {
+                Text(file.content)
+            }
+        } else {
+            Text("Empty")
+        }
+    }
 }

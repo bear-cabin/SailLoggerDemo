@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 60;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -11,6 +11,10 @@
 		094349D12B3EC3AC003C9D46 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094349D02B3EC3AC003C9D46 /* ContentView.swift */; };
 		094349D32B3EC3AD003C9D46 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 094349D22B3EC3AD003C9D46 /* Assets.xcassets */; };
 		094349D62B3EC3AD003C9D46 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 094349D52B3EC3AD003C9D46 /* Preview Assets.xcassets */; };
+		094349DE2B3EC3C6003C9D46 /* SailLogger in Frameworks */ = {isa = PBXBuildFile; productRef = 094349DD2B3EC3C6003C9D46 /* SailLogger */; };
+		094349E02B3F1C7B003C9D46 /* FileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094349DF2B3F1C7B003C9D46 /* FileView.swift */; };
+		094349E22B3FD686003C9D46 /* FileAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094349E12B3FD686003C9D46 /* FileAttribute.swift */; };
+		094349E42B3FE324003C9D46 /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094349E32B3FE324003C9D46 /* AppModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +23,9 @@
 		094349D02B3EC3AC003C9D46 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		094349D22B3EC3AD003C9D46 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		094349D52B3EC3AD003C9D46 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		094349DF2B3F1C7B003C9D46 /* FileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileView.swift; sourceTree = "<group>"; };
+		094349E12B3FD686003C9D46 /* FileAttribute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileAttribute.swift; sourceTree = "<group>"; };
+		094349E32B3FE324003C9D46 /* AppModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -26,6 +33,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				094349DE2B3EC3C6003C9D46 /* SailLogger in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -53,6 +61,9 @@
 			children = (
 				094349CE2B3EC3AC003C9D46 /* SailLoggerDemoApp.swift */,
 				094349D02B3EC3AC003C9D46 /* ContentView.swift */,
+				094349DF2B3F1C7B003C9D46 /* FileView.swift */,
+				094349E12B3FD686003C9D46 /* FileAttribute.swift */,
+				094349E32B3FE324003C9D46 /* AppModel.swift */,
 				094349D22B3EC3AD003C9D46 /* Assets.xcassets */,
 				094349D42B3EC3AD003C9D46 /* Preview Content */,
 			);
@@ -83,6 +94,9 @@
 			dependencies = (
 			);
 			name = SailLoggerDemo;
+			packageProductDependencies = (
+				094349DD2B3EC3C6003C9D46 /* SailLogger */,
+			);
 			productName = SailLoggerDemo;
 			productReference = 094349CB2B3EC3AC003C9D46 /* SailLoggerDemo.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +125,9 @@
 				Base,
 			);
 			mainGroup = 094349C22B3EC3AC003C9D46;
+			packageReferences = (
+				094349DC2B3EC3C6003C9D46 /* XCLocalSwiftPackageReference "../SailLogger" */,
+			);
 			productRefGroup = 094349CC2B3EC3AC003C9D46 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -137,7 +154,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				094349E02B3F1C7B003C9D46 /* FileView.swift in Sources */,
 				094349D12B3EC3AC003C9D46 /* ContentView.swift in Sources */,
+				094349E22B3FD686003C9D46 /* FileAttribute.swift in Sources */,
+				094349E42B3FE324003C9D46 /* AppModel.swift in Sources */,
 				094349CF2B3EC3AC003C9D46 /* SailLoggerDemoApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -344,6 +364,20 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		094349DC2B3EC3C6003C9D46 /* XCLocalSwiftPackageReference "../SailLogger" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = ../SailLogger;
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		094349DD2B3EC3C6003C9D46 /* SailLogger */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = SailLogger;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 094349C32B3EC3AC003C9D46 /* Project object */;
 }

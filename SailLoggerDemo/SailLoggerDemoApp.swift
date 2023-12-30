@@ -9,9 +9,15 @@ import SwiftUI
 
 @main
 struct SailLoggerDemoApp: App {
+    @State private var model = AppModel()
+
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environment(model)
+                .onAppear {
+                    model.reloadLogs()
+                }
         }
     }
 }

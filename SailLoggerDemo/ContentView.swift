@@ -6,16 +6,31 @@
 //
 
 import SwiftUI
+import SailLogger
 
 struct ContentView: View {
+    @Environment(AppModel.self) var model
+
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        NavigationSplitView {
+            List(model.infos, id: \.id) { info in
+                NavigationLink {
+                    FileView(name: info.name)
+                } label: {
+                    Text(info.name)
+                }
+            }
+            .toolbar {
+                Button {
+                    SailLogger.log(msg: "error", level: .error)
+                    model.reloadLogs()
+                } label: {
+                    Text("log")
+                }
+            }
+        } detail: {
+            Text("Empty")
         }
-        .padding()
     }
 }
 

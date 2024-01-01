@@ -22,10 +22,10 @@ struct ContentView: View {
                 }
             }
             .toolbar {
-                Button {
-                    SailLogger.log(msg: "error", level: .error)
+                NavigationLink {
+                    EditView()
                 } label: {
-                    Text("log")
+                    Text("Edit")
                 }
             }
         } detail: {

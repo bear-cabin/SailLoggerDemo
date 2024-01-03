@@ -13,7 +13,7 @@ class AppModel: ObservableObject {
     
     @Published var fileInfos = [FileAttribute]()
     @Published var changedFile: FileAttribute?
-    var infosDict = [String: FileAttribute]()
+    var infosDict = [String: FileAttribute]() // key: name
     var cancellables = Set<AnyCancellable>()
 
     init() {

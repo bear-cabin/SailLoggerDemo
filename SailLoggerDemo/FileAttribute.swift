@@ -9,11 +9,11 @@ import Foundation
 import SailLogger
 import Combine
 
-class FileAttribute: Identifiable, Equatable, Hashable {
+class FileAttribute: ObservableObject, Identifiable, Equatable, Hashable {
     
     let id: String
     let name: String
-    var content = ""
+    @Published var content = ""
     
     init(name: String = "", attributes: [FileAttributeKey: Any] = [:]) {
         id = name

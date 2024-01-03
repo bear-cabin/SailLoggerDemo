@@ -21,15 +21,19 @@ struct ContentView: View {
                     Text(info.name)
                 }
             }
-            .toolbar {
-                NavigationLink {
-                    EditView()
-                } label: {
-                    Text("Edit")
-                }
+            if UIDevice.current.userInterfaceIdiom == .pad {
+                ActionBar()
             }
         } detail: {
             Text("Empty")
         }
+        if UIDevice.current.userInterfaceIdiom == .phone {
+            ActionBar()
+        }
     }
+}
+
+#Preview {
+    ContentView()
+        .environmentObject(AppModel())
 }

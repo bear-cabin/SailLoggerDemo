@@ -27,27 +27,34 @@ class AppModel: ObservableObject {
                 }
             }
             .store(in: &cancellables)
-        FileLogger.shared.$fileNames
-            .sink { names in
-                self.reloadFileInfos(names: names)
+        FileLogger.shared.fileNamesSubject
+            .sink {
+                self.reloadFileInfos()
             }
             .store(in: &cancellables)
+        reloadFileInfos()
     }
-    
-    func reloadFileInfos(names: [String]) {
-        var infos = [FileAttribute]()
-        let logsUrl = FileLogger.shared.logsUrl
-        for name in names {
-            let url = logsUrl.appendingPathComponent(name)
-            if let info = infosDict[name] {
-                infos.append(info)
-            } else if let attributes = try? FileManager.default.attributesOfItem(atPath: url.path) {
-                let info = FileAttribute(name: name, attributes: attributes)
-                infosDict[name] = info
-                infos.append(info)
+        
+    func reloadFileInfos() {
+        do {
+            var infos = [FileAttribute]()
+            let logsUrl = FileLogger.shared.logsUrl
+            let names = try FileManager.default.contentsOfDirectory(atPath: logsUrl.path)
+            for name in names {
+                let url = logsUrl.appendingPathComponent(name)
+                if let info = infosDict[name] {
+                    infos.append(info)
+                } else {
+                    let attributes = try FileManager.default.attributesOfItem(atPath: url.path)
+                    let info = FileAttribute(name: name, attributes: attributes)
+                    infosDict[name] = info
+                    infos.append(info)
+                }
             }
+            fileInfos = infos.sorted { $0.name > $1.name }
+        } catch {
+            print(error)
         }
-        fileInfos = infos.sorted { $0.name > $1.name }
     }
     
 }

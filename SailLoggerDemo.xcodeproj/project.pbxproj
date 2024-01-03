@@ -15,7 +15,7 @@
 		094349E02B3F1C7B003C9D46 /* FileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094349DF2B3F1C7B003C9D46 /* FileView.swift */; };
 		094349E22B3FD686003C9D46 /* FileAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094349E12B3FD686003C9D46 /* FileAttribute.swift */; };
 		094349E42B3FE324003C9D46 /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094349E32B3FE324003C9D46 /* AppModel.swift */; };
-		0976B11A2B40F334004C7607 /* EditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0976B1192B40F334004C7607 /* EditView.swift */; };
+		0976B11A2B40F334004C7607 /* ActionBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0976B1192B40F334004C7607 /* ActionBar.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,7 +27,7 @@
 		094349DF2B3F1C7B003C9D46 /* FileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileView.swift; sourceTree = "<group>"; };
 		094349E12B3FD686003C9D46 /* FileAttribute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileAttribute.swift; sourceTree = "<group>"; };
 		094349E32B3FE324003C9D46 /* AppModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModel.swift; sourceTree = "<group>"; };
-		0976B1192B40F334004C7607 /* EditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditView.swift; sourceTree = "<group>"; };
+		0976B1192B40F334004C7607 /* ActionBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionBar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,7 +63,7 @@
 			children = (
 				094349CE2B3EC3AC003C9D46 /* SailLoggerDemoApp.swift */,
 				094349D02B3EC3AC003C9D46 /* ContentView.swift */,
-				0976B1192B40F334004C7607 /* EditView.swift */,
+				0976B1192B40F334004C7607 /* ActionBar.swift */,
 				094349DF2B3F1C7B003C9D46 /* FileView.swift */,
 				094349E12B3FD686003C9D46 /* FileAttribute.swift */,
 				094349E32B3FE324003C9D46 /* AppModel.swift */,
@@ -159,7 +159,7 @@
 			files = (
 				094349E02B3F1C7B003C9D46 /* FileView.swift in Sources */,
 				094349D12B3EC3AC003C9D46 /* ContentView.swift in Sources */,
-				0976B11A2B40F334004C7607 /* EditView.swift in Sources */,
+				0976B11A2B40F334004C7607 /* ActionBar.swift in Sources */,
 				094349E22B3FD686003C9D46 /* FileAttribute.swift in Sources */,
 				094349E42B3FE324003C9D46 /* AppModel.swift in Sources */,
 				094349CF2B3EC3AC003C9D46 /* SailLoggerDemoApp.swift in Sources */,

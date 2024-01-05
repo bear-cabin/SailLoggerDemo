@@ -12,22 +12,14 @@ import Combine
 struct ContentView: View {
     @EnvironmentObject var model: AppModel
     let device = UIDevice.current.userInterfaceIdiom
-    
-    func file(_ info: FileAttribute) -> Binding<FileAttribute> {
-        Binding {
-            info
-        } set: { file in
-            model.infosDict[file.name] = file
-        }
-    }
-    
+
     var body: some View {
         NavigationSplitView {
-            List(model.fileInfos) { info in
+            List(model.files) { file in
                 NavigationLink {
-                    FileView(file: file(info))
+                    FileView(file: file)
                 } label: {
-                    Text(info.name)
+                    Text(file.name)
                 }
             }
             if device == .pad {

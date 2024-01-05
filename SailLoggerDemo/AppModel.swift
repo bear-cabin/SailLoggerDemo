@@ -11,9 +11,8 @@ import Combine
 
 class AppModel: ObservableObject {
     
-    @Published var fileInfos = [FileAttribute]()
+    @Published var files = [FileAttribute]()
     @Published var changedFile: FileAttribute?
-    var infosDict = [String: FileAttribute]() // key: name
     var cancellables = Set<AnyCancellable>()
 
     init() {
@@ -21,10 +20,9 @@ class AppModel: ObservableObject {
         SailLogger.shared.output = [.console, .file]
         FileLogger.shared.fileContentSubject
             .sink { name in
-                if let info = self.infosDict[name] {
-                    info.loadContent()
-                    self.changedFile = info
-                }
+                let file = FileAttribute(name: name)
+                file.loadContent()
+                self.changedFile = file
             }
             .store(in: &cancellables)
         FileLogger.shared.fileNamesSubject
@@ -38,20 +36,12 @@ class AppModel: ObservableObject {
     func reloadFileInfos() {
         do {
             var infos = [FileAttribute]()
-            let logsUrl = FileLogger.shared.logsUrl
-            let names = try FileManager.default.contentsOfDirectory(atPath: logsUrl.path)
+            let path = FileLogger.shared.logsUrl.path
+            let names = try FileManager.default.contentsOfDirectory(atPath: path)
             for name in names {
-                let url = logsUrl.appendingPathComponent(name)
-                if let info = infosDict[name] {
-                    infos.append(info)
-                } else {
-                    let attributes = try FileManager.default.attributesOfItem(atPath: url.path)
-                    let info = FileAttribute(name: name, attributes: attributes)
-                    infosDict[name] = info
-                    infos.append(info)
-                }
+                infos.append(FileAttribute(name: name))
             }
-            fileInfos = infos.sorted { $0.name > $1.name }
+            files = infos
         } catch {
             print(error)
         }

@@ -10,16 +10,22 @@ import SailLogger
 import Combine
 
 struct FileView: View {
-    @Binding var file: FileAttribute
+    @EnvironmentObject var model: AppModel
+    let file: FileAttribute
     
-    var content: Text {
+    var info: FileAttribute {
+        if file == model.changedFile {
+            return model.changedFile!
+        }
         if file.content.isEmpty {
             file.loadContent()
         }
-        return Text(file.content)
+        return file
     }
-    
+
     var body: some View {
-        ScrollView { content }
+        ScrollView { 
+            Text(info.content)
+        }
     }
 }

@@ -13,16 +13,27 @@ class FileAttribute: ObservableObject, Identifiable, Equatable, Hashable {
     
     let id: String
     let name: String
-    @Published var content = ""
+    let url: URL
+    var size = 0
+    var content = ""
     
-    init(name: String = "", attributes: [FileAttributeKey: Any] = [:]) {
+    init(name: String) {
         id = name
         self.name = name
+        var url = FileLogger.shared.logsUrl
+        url.appendPathComponent(name)
+        self.url = url
+        refreshAttributes()
+    }
+    
+    func refreshAttributes() {
+        let attributes = try? FileManager.default.attributesOfItem(atPath: url.path)
+        if let size = attributes?[.size] as? Int {
+            self.size = size
+        }
     }
     
     func loadContent() {
-        var url = FileLogger.shared.logsUrl
-        url.appendPathComponent(name)
         if let text = try? String(contentsOf: url) {
             content = text
         }
